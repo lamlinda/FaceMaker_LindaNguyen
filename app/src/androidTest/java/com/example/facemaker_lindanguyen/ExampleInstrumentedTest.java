@@ -1,3 +1,7 @@
+/**
+ * @author Linda Nguyen
+ */
+
 package com.example.facemaker_lindanguyen;
 
 import android.content.Context;
