@@ -16,7 +16,11 @@ public class Face {
     }
 
     public void randomize(){
-        // reference for choosing random ints found here: https://stackoverflow.com/questions/20560899/generate-a-random-color-java
+
+        /**
+         * Date: September 7, 2020
+         * reference for choosing random ints found here: https://stackoverflow.com/questions/20560899/generate-a-random-color-java
+         * */
         Random rand = new Random();
 
         skinColor = rand.nextInt(255);

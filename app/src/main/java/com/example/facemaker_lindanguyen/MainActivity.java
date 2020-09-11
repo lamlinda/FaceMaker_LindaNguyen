@@ -13,6 +13,7 @@ import android.widget.Spinner;
 
 public class MainActivity extends AppCompatActivity {
 
+    // array of strings in the spinner
     String[] hairStyles = {"Bowl", "Bald", "Mop", "Spaghetti Hair"};
     private Spinner hairSpin;
 
