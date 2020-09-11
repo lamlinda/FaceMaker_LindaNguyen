@@ -5,6 +5,7 @@
 import java.util.Random;
 
 public class Face {
+    // instance variables for color and style of face
     private int skinColor;
     private int eyeColor;
     private int hairColor;
