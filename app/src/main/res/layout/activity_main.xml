@@ -13,124 +13,134 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="bottom"
-        android:orientation="horizontal"
-        tools:layout_editor_absoluteX="-41dp"
-        tools:layout_editor_absoluteY="-16dp">
+        android:orientation="vertical">
+
+        <com.example.facemaker_lindanguyen.Face
+            android:id="@+id/faceView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginBottom="50dp"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/redLabel"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Red" />
-
-            <SeekBar
-                android:id="@+id/redSeekBar"
-                android:layout_width="150dp"
-                android:layout_height="wrap_content"
-                android:max="255" />
-
-            <TextView
-                android:id="@+id/greenLabel"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Green" />
-
-            <SeekBar
-                android:id="@+id/greenSeekBar"
-                android:layout_width="150dp"
-                android:layout_height="wrap_content"
-                android:max="255" />
-
-            <TextView
-                android:id="@+id/blueLabel"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Blue" />
-
-            <SeekBar
-                android:id="@+id/blueSeekBar"
-                android:layout_width="150dp"
-                android:layout_height="wrap_content"
-                android:max="255" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="10dp"
-            android:layout_marginBottom="20dp"
             android:gravity="bottom"
-            android:orientation="vertical">
+            android:orientation="horizontal">
 
-
-            <Button
-                android:id="@+id/randoButton"
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Random Face" />
+                android:layout_marginLeft="10dp"
+                android:layout_marginBottom="50dp"
+                android:orientation="vertical">
 
-            <!-- I looked at following site for an example on how to use RadioButtons/Groups: https://www.geeksforgeeks.org/android-how-to-add-radio-buttons-in-an-android-application/ -->
-            <RadioGroup
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-
-                <RadioButton
-                    android:id="@+id/hairRadio"
-                    android:layout_width="100dp"
+                <TextView
+                    android:id="@+id/redLabel"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Hair" />
+                    android:text="Red" />
 
-                <RadioButton
-                    android:id="@+id/eyesRadio"
-                    android:layout_width="match_parent"
+                <SeekBar
+                    android:id="@+id/redSeekBar"
+                    android:layout_width="150dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Eyes" />
+                    android:max="255" />
 
-                <RadioButton
-                    android:id="@+id/skinRadio"
-                    android:layout_width="match_parent"
+                <TextView
+                    android:id="@+id/greenLabel"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Skin" />
-            </RadioGroup>
+                    android:text="Green" />
 
-        </LinearLayout>
+                <SeekBar
+                    android:id="@+id/greenSeekBar"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:max="255" />
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="25dp"
-            android:orientation="vertical">
+                <TextView
+                    android:id="@+id/blueLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Blue" />
 
-            <TextView
-                android:id="@+id/spinnerLabel"
+                <SeekBar
+                    android:id="@+id/blueSeekBar"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:max="255" />
+
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Hair Stlyes:" />
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="20dp"
+                android:gravity="bottom"
+                android:orientation="vertical">
 
-            <Spinner
-                android:id="@+id/hairSpinner"
-                android:layout_width="120dp"
-                android:layout_height="50dp"
-                android:layout_marginEnd="131dp"
-                android:layout_marginRight="131dp"
-                android:layout_marginBottom="63dp"
-                android:scrollbarSize="16dp" />
+
+                <Button
+                    android:id="@+id/randoButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Random Face" />
+
+                <!-- I looked at following site for an example on how to use RadioButtons/Groups: https://www.geeksforgeeks.org/android-how-to-add-radio-buttons-in-an-android-application/ -->
+                <RadioGroup
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <RadioButton
+                        android:id="@+id/hairRadio"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Hair" />
+
+                    <RadioButton
+                        android:id="@+id/eyesRadio"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Eyes" />
+
+                    <RadioButton
+                        android:id="@+id/skinRadio"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Skin" />
+                </RadioGroup>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="25dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/spinnerLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Hair Stlyes:" />
+
+                <Spinner
+                    android:id="@+id/hairSpinner"
+                    android:layout_width="120dp"
+                    android:layout_height="50dp"
+                    android:layout_marginEnd="131dp"
+                    android:layout_marginRight="131dp"
+                    android:layout_marginBottom="63dp"
+                    android:scrollbarSize="16dp" />
+
+            </LinearLayout>
 
         </LinearLayout>
-
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
