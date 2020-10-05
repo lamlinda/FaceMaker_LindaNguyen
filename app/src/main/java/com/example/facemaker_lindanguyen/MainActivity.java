@@ -10,14 +10,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.hardware.camera2.params.Face;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
+import android.widget.SeekBar;
 import android.widget.Spinner;
 
 public class MainActivity extends AppCompatActivity {
 
     // array of strings in the spinner
-    String[] hairStyles = {"Bowl", "Bald", "Mop"};
+    String[] hairStyles = {"Bowl", "Rectangle", "tassels"};
     private Spinner hairSpin;
-    private Face facey;
+    private Face faceV = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,8 +32,12 @@ public class MainActivity extends AppCompatActivity {
         ArrayAdapter<String> hairAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, this.hairStyles);
         hairSpin.setAdapter(hairAdapter);
 
-        //facey = findViewById(R.id.faceView);
+        Face faceV = findViewById(R.id.faceview);
+
+        SeekBar redValue = findViewById(R.id.redSeekBar);
+
 
 
     }
+
 }
