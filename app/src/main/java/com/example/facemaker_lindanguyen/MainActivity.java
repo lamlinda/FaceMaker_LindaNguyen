@@ -18,7 +18,6 @@ public class MainActivity extends AppCompatActivity {
     // array of strings in the spinner
     String[] hairStyles = {"Bowl", "Rectangle", "tassels"};
     private Spinner hairSpin;
-    private Face faceV = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +31,8 @@ public class MainActivity extends AppCompatActivity {
         ArrayAdapter<String> hairAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, this.hairStyles);
         hairSpin.setAdapter(hairAdapter);
 
-        Face faceV = findViewById(R.id.faceview);
+        //Face faceV = findViewById(R.id.faceview);
+        FaceView faceV = findViewById(R.id.test);
 
         SeekBar redValue = findViewById(R.id.redSeekBar);
 

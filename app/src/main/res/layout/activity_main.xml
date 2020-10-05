@@ -15,11 +15,11 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-<!--        <com.example.facemaker_lindanguyen.Face-->
-<!--            android:id="@+id/face"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="match_parent"-->
-<!--            android:layout_weight="1" />-->
+        <com.example.facemaker_lindanguyen.FaceView
+            android:id="@+id/test"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -142,11 +142,6 @@
 
         </LinearLayout>
 
-        <com.example.facemaker_lindanguyen.Face
-            android:id="@+id/faceview"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
