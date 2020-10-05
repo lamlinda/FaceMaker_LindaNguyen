@@ -32,6 +32,8 @@ public class MainActivity extends AppCompatActivity {
         hairSpin.setAdapter(hairAdapter);
 
         //Face faceV = findViewById(R.id.faceview);
+
+        //I don't understand why but, when i name the face class just "Face" it gives me an error
         FaceView faceV = findViewById(R.id.test);
 
         SeekBar redValue = findViewById(R.id.redSeekBar);
