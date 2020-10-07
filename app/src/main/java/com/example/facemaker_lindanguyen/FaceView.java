@@ -72,6 +72,11 @@ public class FaceView extends SurfaceView {
         return eyeColor;
     }
 
+    //may use this for the random face button later. Not sure yet
+    public String getHairStyle(){
+        return hairStyle;
+    }
+
     public void setHairColor(int red, int green, int blue){
         hairColor = Color.rgb(red, green, blue);
     }
@@ -106,7 +111,7 @@ public class FaceView extends SurfaceView {
         skinGreen = rand.nextInt(255);
         skinBlue = rand.nextInt(255);
 
-        //randomize eyecolor
+        //randomize eye color
         eyeRed = rand.nextInt(255);
         eyeGreen = rand.nextInt(255);
         eyeBlue = rand.nextInt(255);
@@ -120,6 +125,7 @@ public class FaceView extends SurfaceView {
     public void onDraw(Canvas canvas)
     {
 
+        // set paint objects to proper colors in order to draw
         hairC.setColor(hairColor);
         skinC.setColor(skinColor);
         eyeC.setColor(eyeColor);

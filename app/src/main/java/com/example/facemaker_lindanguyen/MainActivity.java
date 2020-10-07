@@ -19,6 +19,8 @@ import android.widget.RadioButton;
 import android.widget.SeekBar;
 import android.widget.Spinner;
 
+import java.util.Random;
+
 import static android.graphics.Color.red;
 
 public class MainActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener, SeekBar.OnSeekBarChangeListener, RadioButton.OnClickListener{
@@ -43,8 +45,6 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     private int blue = 0;
 
     private FaceView fv;
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -167,6 +167,27 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
     @Override
     public void onClick(View v) {
+        if(v.getId() == R.id.randoButton){
+            Random rand = new Random();
+
+            faceV.setEyeColor(rand.nextInt(255), rand.nextInt(255), rand.nextInt(255));
+            faceV.setHairColor(rand.nextInt(255), rand.nextInt(255), rand.nextInt(255));
+            faceV.setSkinColor(rand.nextInt(255),rand.nextInt(255),rand.nextInt(255));
+
+            /**
+             * External Citation
+             * Date October 5, 2020
+             * Problem: Need to get a random string from the array of hairstyles
+             *
+             * Resource: https://stackoverflow.com/questions/6726963/random-string-from-string-array-list
+             *
+             * Solution: set the hairstyle by passing a random number in for index in the array of hairstyles
+             */
+            faceV.setHairStyle(hairStyles[rand.nextInt(3)]);
+
+            faceV.invalidate();
+        }
+
 
         int tempHair = faceV.getHairColor();
         int tempSkin = faceV.getSkinColor();
@@ -180,7 +201,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
          *
          * Resources: https://developer.android.com/reference/android/graphics/Color.html
          *
-         * Solution: referenced the android api and used the built in Color.red/green/bllue() method to pull the color components from a color int
+         * Solution: referenced the android api and used the built in Color.red/green/blue() method to pull the color components from a color int
          *
          */
         if(this.skinButton.isChecked()){
