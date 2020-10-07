@@ -167,6 +167,8 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
     @Override
     public void onClick(View v) {
+
+        // get random ints to set each property of the face to a random value
         if(v.getId() == R.id.randoButton){
             Random rand = new Random();
 
@@ -201,6 +203,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         }
 
 
+        // get the rgb color value of skin, hair, and eyes in order to set the seekbars to those corresponding values
         int tempHair = faceV.getHairColor();
         int tempSkin = faceV.getSkinColor();
         int tempEyes = faceV.getEyeColor();

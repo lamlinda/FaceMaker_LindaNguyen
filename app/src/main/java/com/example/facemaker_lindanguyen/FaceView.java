@@ -60,6 +60,7 @@ public class FaceView extends SurfaceView {
 
     }
 
+    //getter and setter methods to be used in the MainActivity class
     public int getHairColor(){
         return hairColor;
     }
@@ -116,6 +117,7 @@ public class FaceView extends SurfaceView {
         eyeGreen = rand.nextInt(255);
         eyeBlue = rand.nextInt(255);
 
+        // set the rgb Colors into a paint variable so it can be used in a draw method
         hairC.setColor(hairColor);
         skinC.setColor(skinColor);
         eyeC.setColor(eyeColor);
@@ -125,7 +127,7 @@ public class FaceView extends SurfaceView {
     public void onDraw(Canvas canvas)
     {
 
-        // set paint objects to proper colors in order to draw
+        // set paint objects to proper colors in order to draw and draw all the shapes necessary for the face
         hairC.setColor(hairColor);
         skinC.setColor(skinColor);
         eyeC.setColor(eyeColor);
@@ -136,6 +138,7 @@ public class FaceView extends SurfaceView {
         //this line draws the mouth
         canvas.drawOval(300, 0x258, 700, 550, black);
 
+        // find out which hairstyle is selected from the spinner and draw it
         if (hairStyle == "Bowl") {
             drawBowl(canvas);
         }
