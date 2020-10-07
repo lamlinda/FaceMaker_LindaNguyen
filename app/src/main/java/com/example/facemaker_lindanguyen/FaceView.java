@@ -7,40 +7,33 @@ import android.graphics.Paint;
 import android.graphics.RectF;
 import android.util.AttributeSet;
 import android.view.SurfaceView;
-import android.widget.RadioButton;
-import android.widget.SeekBar;
 
 import java.util.Random;
 
 public class FaceView extends SurfaceView {
     private int skinColor;
     private int eyeColor;
+    private int hairColor;
 
-    public int hairRed;
-    public int hairGreen;
-    public int hairBlue;
+    private int hairRed;
+    private int hairGreen;
+    private int hairBlue;
 
-    public int skinRed;
-    public int skinGreen;
-    public int skinBlue;
-
-    private int hairStyle;
+    private int skinRed;
+    private int skinGreen;
+    private int skinBlue;
 
     public int eyeRed;
     public int eyeGreen;
     public int eyeBlue;
 
+    private String hairStyle;
 
-
-    public int hairC;
-    public int eyeC;
-    public int skinC;
-
-
-    Paint skin = new Paint();
-    Paint black = new Paint();
-    Paint eye = new Paint();
-    Paint hairColor = new Paint();
+    //knowledge on paints taken from class lectures. Didn't know if I needed to cite that
+    Paint skinC = new Paint();
+    Paint eyeC = new Paint();
+    Paint hairC = new Paint();
+    Paint black = new Paint(Color.BLACK);
 
 
     public FaceView(Context context, AttributeSet attrs) {
@@ -49,24 +42,60 @@ public class FaceView extends SurfaceView {
         randomize();
 
 
-        black.setStrokeWidth(8.0f);
-        setBackgroundColor(Color.WHITE);  //better than black default
+        hairC.setStrokeWidth(8.0f);
+        setBackgroundColor(Color.WHITE);
 
-        skinC = Color.rgb(skinRed, skinGreen, skinBlue);
-        hairC = Color.rgb(hairRed, hairGreen, hairBlue);
-        eyeC = Color.rgb(eyeRed, eyeGreen, eyeBlue);
+        /**
+         * External Citation
+         * Date: October 3rd, 2020
+         * Problem: Don't know how to turn three rgb ints into a single color int
+         *
+         * Resource: https://developer.android.com/reference/android/graphics/Color#rgb(int,%20int,%20int)
+         *
+         * Solution: Used the Color.rgb() method to pass in individual rgb values and make a single color int
+         */
+        skinColor = Color.rgb(skinRed, skinGreen, skinBlue);
+        hairColor = Color.rgb(hairRed, hairGreen, hairBlue);
+        eyeColor = Color.rgb(eyeRed, eyeGreen, eyeBlue);
 
     }
 
+    public int getHairColor(){
+        return hairColor;
+    }
+
+    public int getSkinColor(){
+        return skinColor;
+    }
+
+    public int getEyeColor(){
+        return eyeColor;
+    }
+
+    public void setHairColor(int red, int green, int blue){
+        hairColor = Color.rgb(red, green, blue);
+    }
+
+    public void setSkinColor(int red, int green, int blue){
+        skinColor = Color.rgb(red, green, blue);
+    }
+
+    public void setEyeColor(int red, int green, int blue){
+        eyeColor = Color.rgb(red, green, blue);
+    }
 
     public void randomize() {
 
         /**
+         * External Citation
          * Date: September 7, 2020
-         * reference for choosing random ints found here: https://stackoverflow.com/questions/20560899/generate-a-random-color-java
+         * Problem: Don't know how to create a random int
+         *
+         * Reference: https://stackoverflow.com/questions/20560899/generate-a-random-color-java
+         *
+         * Solution: make a Random object and use rand.nextInt to get a random number
          * */
         Random rand = new Random();
-
         //randomize hair color
         hairRed = rand.nextInt(255);
         hairGreen = rand.nextInt(255);
@@ -82,61 +111,80 @@ public class FaceView extends SurfaceView {
         eyeGreen = rand.nextInt(255);
         eyeBlue = rand.nextInt(255);
 
-        eyeColor = rand.nextInt(255);
-        hairStyle = rand.nextInt(255);
-
-        //this.hairC = Color.rgb(hairRed, hairGreen, hairBlue);
-        //this.hairColor.setColor(hairC);
+        hairC.setColor(hairColor);
+        skinC.setColor(skinColor);
+        eyeC.setColor(eyeColor);
     }
 
 
     public void onDraw(Canvas canvas)
     {
 
-        hairColor.setColor(hairC);
-        skin.setColor(skinC);
-        eye.setColor(eyeC);
+        hairC.setColor(hairColor);
+        skinC.setColor(skinColor);
+        eyeC.setColor(eyeColor);
 
-        canvas.drawCircle(500, 500, 250, skin);
-        //drawFace(canvas, black);
-        drawHair(canvas, hairStyle);
+        canvas.drawCircle(500, 500, 250, skinC);
+        drawEyes(canvas, eyeC);
 
+        //this line draws the mouth
+        canvas.drawOval(300, 0x258, 700, 550, black);
+
+        if (hairStyle == "Bowl") {
+            drawBowl(canvas);
+        }
+        else if(hairStyle == "Rectangle"){
+            drawRectangle(canvas);
+        }
+        else if(hairStyle == "Tassels"){
+            drawTassel(canvas);
+        }
 
     }//onDraw
 
-    public void drawFace(Canvas canvas, Paint paint) {
+    /**
+     * External Citation
+     * Date: October 3rd, 2020
+     * Problem: Didn't know how to draw things onto canvas
+     *
+     * Resources: Knowledge from in class lecture and example code to draw shapes to canvas and
+     * https://thoughtbot.com/blog/android-canvas-drawarc-method-a-visual-guide to draw the half circle for bowl hair
+     *
+     *Solution: used different built in draw methods to create shapes
+     *
+     * @param canvas
+     * @param paint
+     */
+    public void drawEyes(Canvas canvas, Paint paint) {
         canvas.drawCircle(400, 400, 50, paint);
         canvas.drawCircle(630, 400, 50, paint);
-        canvas.drawOval(300, 0x258, 700, 550, paint);
+
     }
 
-    public void drawHair(Canvas canvas, int hair){
-        if(hair == 0){
-            //bowl hair
-            RectF rect = new RectF(300, 200, 700, 420);
-            canvas.drawArc(rect, 0, -180, true, hairColor);
-        }
-        else if(hair == 1){
-            //rectangle hair
-            canvas.drawRect(400, 230, 600, 330, hairColor);
-        }
-        else if(hair == 2){
-            //tassel hair
-            canvas.drawOval(300, 230, 700, 330, hairColor);
-            canvas.drawLine(350, 250, 350, 400, hairColor);
-            canvas.drawLine(400, 250, 400, 400, hairColor);
-            canvas.drawLine(450, 250, 450, 400, hairColor);
-            canvas.drawLine(500, 250, 500, 400, hairColor);
-            canvas.drawLine(550, 250, 550, 400, hairColor);
-            canvas.drawLine(600, 250, 600, 400, hairColor);
-        }
+
+    public void drawBowl(Canvas canvas){
+        //bowl hair
+        RectF rect = new RectF(300, 200, 700, 420);
+        canvas.drawArc(rect, 0, -180, true, hairC);
     }
 
-    public int getHairStyle(){
-        return this.hairStyle;
+    public void drawRectangle(Canvas canvas){
+        //rectangle hair
+        canvas.drawRect(400, 230, 600, 330, hairC);
     }
 
-    public void setHairStyle(int hair){
+    public void drawTassel(Canvas canvas){
+        //tassel hair: an oval with strands of hair sticking down
+        canvas.drawOval(300, 230, 700, 330, hairC);
+        canvas.drawLine(350, 250, 350, 400, hairC);
+        canvas.drawLine(400, 250, 400, 400, hairC);
+        canvas.drawLine(450, 250, 450, 400, hairC);
+        canvas.drawLine(500, 250, 500, 400, hairC);
+        canvas.drawLine(550, 250, 550, 400, hairC);
+        canvas.drawLine(600, 250, 600, 400, hairC);
+    }
+
+    public void setHairStyle(String hair){
         this.hairStyle = hair;
     }
 
