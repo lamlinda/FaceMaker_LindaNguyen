@@ -177,11 +177,15 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             /**
              * External Citation
              * Date October 5, 2020
-             * Problem: Need to get a random string from the array of hairstyles
+             * Problem: Need to get a random string from the array of hairstyles and also update the spinner so it
+             * reflects that actual hairstyle that is drawn
              *
-             * Resource: https://stackoverflow.com/questions/6726963/random-string-from-string-array-list
+             * Resource: https://stackoverflow.com/questions/6726963/random-string-from-string-array-list for random string
+             * https://www.thetopsites.net/article/52303054.shtml#:~:text=Show%20default%20value%20in%20Spinner,value%20from%20the%20dropdown%20menu.&text=spinner.,setAdapter(yourAdapter)%3B%20spinner. to find how
+             * to set what is on the spinner
              *
-             * Solution: set the hairstyle by passing a random number in for index in the array of hairstyles
+             * Solution: set the hairstyle by passing a random number in for index in the array of hairstyles and using spinner.setSelection(position) to change the spinner
+             * to properly reflect what is drawn
              */
             faceV.setHairStyle(hairStyles[rand.nextInt(3)]);
             if(faceV.getHairStyle() == "Bowl"){
