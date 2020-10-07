@@ -26,7 +26,7 @@ import static android.graphics.Color.red;
 public class MainActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener, SeekBar.OnSeekBarChangeListener, RadioButton.OnClickListener{
 
     // array of strings in the spinner
-    String[] hairStyles = {"Bowl", "Rectangle", "Tassels"};
+    String[] hairStyles = {"Bowl", "Rectangle", "Tassel"};
     private Spinner hairSpin;
     private SeekBar redValue;
     private SeekBar greenValue;
@@ -184,7 +184,15 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
              * Solution: set the hairstyle by passing a random number in for index in the array of hairstyles
              */
             faceV.setHairStyle(hairStyles[rand.nextInt(3)]);
-
+            if(faceV.getHairStyle() == "Bowl"){
+                hairSpin.setSelection(0);
+            }
+            else if(faceV.getHairStyle() == "Rectangle"){
+                hairSpin.setSelection(1);
+            }
+            else if(faceV.getHairStyle() == "Tassel"){
+                hairSpin.setSelection(2);
+            }
             faceV.invalidate();
         }
 

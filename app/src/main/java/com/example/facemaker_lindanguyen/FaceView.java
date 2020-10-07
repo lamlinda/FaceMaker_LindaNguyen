@@ -142,7 +142,7 @@ public class FaceView extends SurfaceView {
         else if(hairStyle == "Rectangle"){
             drawRectangle(canvas);
         }
-        else if(hairStyle == "Tassels"){
+        else if(hairStyle == "Tassel"){
             drawTassel(canvas);
         }
 
